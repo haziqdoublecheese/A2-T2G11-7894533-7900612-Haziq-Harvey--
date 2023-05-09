@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+    </style>
+  </head>
+  <body>
+    <section> <!--Part 1-->
+      <table style= "width:60%">
+        <th colspan="3">CSIT128:Assignment 2</th><th>Group T2G11</th>
+        <tr>
+          <td rowspan="2">Student Number / Name / Email</td>
+          <td>7900612</td><td>Harvey Duran Damanhure</td><td>hdd776@uowmail.edu.au</td>
+        </tr>
+        <tr>
+          <td>7894533</td><td>Mohammed Haziq Zainuddin Simatupang</td><td>mhzs989@uowmail.edu.au</td>
+        </tr>
+      </table>
+    </section> 
+    <section><!--Part 2-->
+      <br>
+      <table style="width:600px">
+        <th colspan="3"style="background-color: rgb(244, 221, 128);"><h3 style="font-family: 'Courier New', Courier, monospace;">Part 2: Game</h3></th>
+        <tr style="height:40px">
+          <td style="background-color: rgb(218, 237, 249);"><strong>Your chosen item:&nbsp;</strong></td>
+          <td style="width:200px; background-color: rgb(218, 237, 249);">
+            <form>
+              <label name="item">&emsp;Choose an Item: </label>
+              <select name="item" id="item">
+                <!--!@#$%^&*()_+=?qwertyuiop1234567890-->
+                <option value="!">!</option>
+                <option value="@">@</option>
+                <option value="#">#</option>
+                <option value="$">$</option>
+                <option value="%">%</option>
+                <option value="^">^</option>
+                <option value="&">&</option>
+                <option value="*">*</option>
+                <option value="(">(</option>
+                <option value=")">)</option>
+                <option value="_">_</option>
+                <option value="+">+</option>
+                <option value="=">+</option>
+                <option value="?">?</option>
+                <option value="q">q</option>
+                <option value="w">w</option>
+                <option value="e">e</option>
+                <option value="r">r</option>
+                <option value="t">t</option>
+                <option value="y">y</option>
+                <option value="u">u</option>
+                <option value="i">i</option>
+                <option value="o">o</option>
+                <option value="p">p</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="0">0</option>
+              </select>
+            </form>
+          </td>
+          <td><h3 style="font-family: 'Courier New', Courier, monospace; text-align: center;">Current Score:&nbsp;</h3></td>
+        </tr>
+        <tr style="height: 40px;">
+          <td colspan="3">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<button id="start" type="button" onclick="startGame()">Start Game</button>&emsp;&emsp;&emsp;&emsp;&emsp;<button id="stop" type="button">Stop Game</button></td>
+        </tr>
+        <tr style="height: 80px;">
+          <td id="first" style="text-align: center;">&lt;1st Item&gt;</td>
+          <td id="second" style="text-align: center;">&lt;2nd Item&gt;</td>
+          <td id="third"style="text-align: center;">&lt;3rd Item&gt;</td>
+        </tr>
+        
+        <script>
+          const items = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "=", "?", "q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+          
+          function getRandom(min, max) {
+            const floatRandom = Math.random()
+
+            const difference = max - min
+
+            // random between 0 and the difference
+            const random = Math.round(difference * floatRandom)
+
+            const randomWithinRange = random + min
+
+            return randomWithinRange
+          }
+
+          let randomNum1 = (getRandom(0,33))
+          let randomNum2 = (getRandom(0,33))
+          let randomNum3 = (getRandom(0,33))
+
+          let item1 = items[randomNum1];
+          let item2 = items[randomNum2];
+          let item3 = items[randomNum3];
+
+          function startGame(){
+            document.getElementById("first").innerHTML = item1;
+            document.getElementById("second").innerHTML = item2;
+            document.getElementById("third").innerHTML = item3;
+          }
+         
+
+          
+
+          
+
+        </script>
+
+    </section>
+  </body>
+</html>
