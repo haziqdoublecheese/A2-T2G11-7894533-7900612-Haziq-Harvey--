@@ -24,7 +24,7 @@
     <section><!--Part 2-->
       <br>
       <table style="width:600px">
-        <th colspan="3"style="background-color: rgb(244, 221, 128);"><h3 style="font-family: 'Courier New', Courier, monospace;">Part 2: Game</h3></th>
+        <th colspan="3" style="background-color: rgb(255, 199, 159);"><h2 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Part 2: Game</h2></th>
         <tr style="height:40px">
           <td style="background-color: rgb(218, 237, 249);"><strong>Your chosen item:&nbsp;</strong></td>
           <td style="width:200px; background-color: rgb(218, 237, 249);">
@@ -69,51 +69,47 @@
               </select>
             </form>
           </td>
-          <td><h3 style="font-family: 'Courier New', Courier, monospace; text-align: center;">Current Score:&nbsp;<span id="counter">0</span></h3></td>
+          <td style="background-color: rgb(255, 245, 193);"><h3 style="font-family: 'Courier New', Courier, monospace; text-align: center;">Current Score:&nbsp;<span style="color: red;" id="counter">0</span></h3></td>
         </tr>
         <tr style="height: 40px;">
-          <td colspan="3">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<button id="start" type="button" onclick="startGame()">Start Game</button>&emsp;&emsp;&emsp;&emsp;&emsp;<button id="stop" type="button">Stop Game</button></td>
+          <td colspan="3" style="background-color: rgb(149, 255, 138);">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<button id="start" type="button" onclick="startGame()">Start Game</button>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<button id="stop" type="button" onclick="stopGame()">Stop Game</button></td>
         </tr>
         <tr style="height: 80px;">
-          <td style="text-align: center;"><button id="first" type="button" onclick="">1st Item</button></td>
+          <td style="text-align: center;"><button id="first" type="button">1st Item</button></td>
           <td style="text-align: center;"><button id="second" type="button">2nd Item</button></td>
           <td style="text-align: center;"><button id="third" type="button">3rd Item</button></td>
         </tr>
         
         <script>
           const items = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "=", "?", "q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
-          
+          let intervalId;
+
           function getRandom(min, max) {
-            const floatRandom = Math.random()
-
-            const difference = max - min
-
-            // random between 0 and the difference0 
-            const random = Math.round(difference * floatRandom)
-
-            const randomWithinRange = random + min
-
-            return randomWithinRange
+            return Math.floor(Math.random() * (max - min) + min);
           }
-
-          let randomNum1 = (getRandom(0,0));
-          let randomNum2 = (getRandom(0,33));
-          let randomNum3 = (getRandom(0,33));
-
-          let item1 = items[randomNum1];
-          let item2 = items[randomNum2];
-          let item3 = items[randomNum3];
-
-          //this helps to start randomising the contents of the button
           function startGame(){
-            document.getElementById("first").innerHTML = item1;
-            document.getElementById("second").innerHTML = item2;
-            document.getElementById("third").innerHTML = item3;
+            clearInterval(intervalId);
+            var counterEl = document.getElementById("counter");
+            var counterValue = parseInt(counterEl.innerHTML);
+            counterValue = 0;
+            counterEl.innerHTML = counterValue.toString();
+
+            intervalId = setInterval(function(){
+              let randomNum1 = (getRandom(0,33));
+              let randomNum2 = (getRandom(0,33));
+              let randomNum3 = (getRandom(0,33));
+
+              let item1 = items[randomNum1];
+              let item2 = items[randomNum2];
+              let item3 = items[randomNum3];
+
+              //this helps to start randomising the contents of the button
+              document.getElementById("first").innerHTML = item1;
+              document.getElementById("second").innerHTML = item2;
+              document.getElementById("third").innerHTML = item3;
+            }, 1000) 
           }
 
-          function keepRandomising(){
-            //to change number every second
-          }
           
           //function to keep adding score
           function increment(){
@@ -123,109 +119,45 @@
             counterEl.innerHTML = counterValue.toString();
           }
 
-          switch (document.getElementById("first").innerHTML) {
-            case "!":
-              if (document.getElementById("item").value === "!") {
-                document.getElementById("first").onclick = increment;
-              }
-              break;
-            case "@": id="@"; 
-                      if(document.getElementById("item").innerHTML == "@"){
-                        increment();
-                      }
-              break;
-            case "#": id="#";  
-                      if(document.getElementById("item").innerHTML == "#"){
-                        increment();
-                      }
-              break;
-            case "$": id="$";  
-                      if(document.getElementById("item").innerHTML == "$"){
-                        increment();
-                      }
-              break;
-            case "%": id="%";  
-                      if(document.getElementById("item").innerHTML == "%"){
-                        increment();
-                      }
-              break;
-            case "^": id="^";  
-                      if(document.getElementById("item").innerHTML == "^"){
-                        increment();
-                      }
-              break;;
-            case "&": id="&";  
-                      if(document.getElementById("item").innerHTML == "&"){
-                        increment();
-                      }
-              break;
-            case "*": id="*";  
-                      if(document.getElementById("item").innerHTML == "*"){
-                        increment();
-                      }
-              break;
-            case "(": id="(";  
-                      if(document.getElementById("item").innerHTML == "("){
-                        increment();
-                      }
-              break;
-            case ")": id=")";  
-                      if(document.getElementById("item").innerHTML == ")"){
-                        increment();
-                      }
-              break;
-            case "_": id="_";  
-                      if(document.getElementById("item").innerHTML == "_"){
-                        increment();
-                      }
-              break;
-            case "+": id="+";  
-                      if(document.getElementById("item").innerHTML == "+"){
-                        increment();
-                      }
-              break;
-            case "=": id="=";  
-                      if(document.getElementById("item").innerHTML == "="){
-                        increment();
-                      }
-              break;
-            case "?": id="?";  
-                      if(document.getElementById("item").innerHTML == "?"){
-                        increment();
-                      }
-              break;
-            case "q": id="q"; break;
-            case "w": id="w"; break;
-            case "e": id="e"; break;
-            case "r": id="r"; break;
-            case "t": id="t"; break;
-            case "y": id="y"; break;
-            case "u": id="u"; break;
-            case "i": id="i"; break;
-            case "o": id="o"; break;
-            case "p": id="p"; break;
-            case "1": id="1"; break;
-            case "2": id="2"; break;
-            case "3": id="3"; break;
-            case "4": id="4"; break;
-            case "5": id="5"; break;
-            case "6": id="6"; break;
-            case "7": id="7"; break;
-            case "8": id="8"; break;
-            case "9": id="9"; break;
-            case "0": id="0"; break;
+          function decrement(){
+            var counterEl = document.getElementById("counter");
+            var counterValue = parseInt(counterEl.innerHTML);
+            counterValue -= 3;
+            counterEl.innerHTML = counterValue.toString();
           }
 
           function stopGame(){
-
+            clearInterval(intervalId);
           }
 
-          //find a way to make the buttons randomise again after being pressed
-          function pressedButton(){
-            
-          }
+          var firstButton = document.getElementById("first");
+          var secondButton = document.getElementById("second");
+          var thirdButton = document.getElementById("third");
+          var selectedItem = document.getElementById("item");
 
-          
+          firstButton.addEventListener("click", function() {
+            if (firstButton.innerHTML === selectedItem.value) {
+              increment();
+            }else{
+              decrement();
+            }
+          });
+
+          secondButton.addEventListener("click", function() {
+            if (secondButton.innerHTML === selectedItem.value) {
+              increment();
+            }else{
+              decrement();
+            }
+          });
+
+          thirdButton.addEventListener("click", function() {
+            if (thirdButton.innerHTML === selectedItem.value) {
+              increment();
+            }else{
+              decrement();
+            }
+          });
 
           
 
